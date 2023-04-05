@@ -1,5 +1,7 @@
 package com.methods.demo;
 
+import com.constructors.accessmodifier.Bike;
+
 public class Calculator {
 	
 	int temp = 10;
@@ -38,6 +40,7 @@ public class Calculator {
 	//	int c = cal.multiply(3, 5);
 		System.out.println(cal.add(3, 5));
 		cal.hai();
+
 	}
 
 }
