@@ -1,4 +1,4 @@
-package com.tutorial.table_per_hirearchy.model;
+package com.tutorial.table_per_concrete_xml;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,18 +12,26 @@ public class HibernateDemo {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		
+		//employee
+		
 		Employee e1=new Employee();    
-	    e1.setName("Gaurav Chawla");    
+	    e1.setName("Gaurav Chawla");   
+	    
+	    //regular employe
 	        
 	    RegularEmployee e2=new RegularEmployee();    
 	    e2.setName("Vivek Kumar");    
 	    e2.setSalary(50000);    
 	    e2.setBonus(5);    
 	        
+	    
+	    //contract employee
 	    ContractEmployee e3=new ContractEmployee();    
 	    e3.setName("Arjun Kumar");    
 	    e3.setPay_per_hour(1000);    
-	    e3.setContract_duration("15 hours"); 
+	    e3.setContract_duration("15 hours");
+	    
+	    
 	    session.save(e1);
 	    session.save(e2);
 	    session.save(e3);

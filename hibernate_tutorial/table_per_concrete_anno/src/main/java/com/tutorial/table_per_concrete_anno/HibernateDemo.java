@@ -1,4 +1,4 @@
-package com.tutorial.table_per_hirearchy.model;
+package com.tutorial.table_per_concrete_anno;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

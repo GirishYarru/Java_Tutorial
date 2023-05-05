@@ -1,4 +1,4 @@
-package com.tutorial.table_per_hirearchy.model;
+package com.tutorial.table_per_hirearchy_annotation;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +11,6 @@ public class HibernateDemo {
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		
 		Employee e1=new Employee();    
 	    e1.setName("Gaurav Chawla");    
 	        
