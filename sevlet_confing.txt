@@ -1,0 +1,90 @@
+Servlet Config and init params
+-------------------------------------
+-> Servelt config object is createed when evr servlet run
+- its an object which has servle configuration details.
+-> Each servlet config object has init params
+
+There is a init() which runs when ever your servlet program runs
+
+
+class LoginServlet extends HttpServelt{
+
+
+@override
+
+public void init(ServeltConfig config){
+
+
+int res = config.getInitParameter("count");
+
+print (res);
+
+
+
+}
+
+
+
+
+}
+
+
+Servlet context and context params
+---------------------------------------------------------
+-> All servlets has one common object. It is called as servlet context
+-> we can creaet context parameters and these can be accessed in all servlet programs.
+
+
+
+Filetrs
+----------------
+A filter is invoked before and after every request
+
+To use filter in servket, we need to configure it web.xml
+Filter is mainly used for logging, compression, encryption and decryption, input validation.
+
+Filter API
+Present The javax.servlet package. There are 3 Filter API's.
+
+1)Filter - 3
+2)FilterChain - 1
+3)FilterConfig - 4
+
+
+1)Filter
+----------------
+For creating any filter, you must implement the Filter interface. Filter interface provides the life cycle methods for a filter.
+
+  public void init(FilterConfig config);
+  
+  public void doFilter(HttpServletRequest request,HttpServletResponse response, FilterChain chain)
+  
+  
+  
+  public void destroy()
+  
+2) FilterChain interface
+---------------------------
+FilterChain is responsible to invoke the next filter or resource.
+This object is passed in the doFilter method of Filter interface.
+
+   doFilter(HttpServletRequest request,HttpServletResponse response, FilterChain chain);
+   
+   FilerChain contains only one method:
+   
+   doFilter(req, resp);
+   
+3)FilterConfig
+-------------------
+FilterConfig can be used to read filter init parameters. Placed in web.xml file.
+
+Methods of FilterConfig Interface
+1. String getFilterName() -> Return the filter-name of this filter in web.xml
+2. String getInitParameter(String name) -> Return the value of given parameter
+3. Enumeration getInitParameterNames() -> returns all the parameter names
+4. ServletContext getServletContext()
+
+
+Example:
+---------------
+

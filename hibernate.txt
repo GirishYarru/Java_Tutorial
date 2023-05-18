@@ -1,0 +1,196 @@
+Hibernate Framework
+ORM (Object Relational Mapping) tool. Hibernate implements the specifications of JPA (Java Persistence API) for data persistence.
+It maps the object to the data stored in the database.
+
+Advantages of Hibernate Framework
+1)Fast Performance
+The performance of hibernate framework is fast because cache is internally used in hibernate framework.
+ There are two types of cache in hibernate framework first level cache and second level cache. 
+ First level cache is enabled by default.
+ 
+ 2)Database Independent Query
+ It uses HQL
+ It generates the database independent queries.
+ So you don't need to write database specific queries
+ Before Hibernate, if database is changed for the project, we need to change the SQL query as well that leads to the maintenance problem
+ 
+ 3)Automatic Table Creation
+ Hibernate framework provides the facility to create the tables of the database automatically.
+ 
+ 4)Simplifies Complex Join
+ Fetching data from multiple tables is easy in hibernate framework.
+ 
+ Hibernate Architecture
+ ------------------------------
+ Java Application
+ Hibernate framework - session factory, session, transaction, connection
+ Database - JDBC,JNDI
+ 
+Elements of Hibernate Architecture
+--------------------------------------
+SessionFactory
+
+The SessionFactory is a factory of session.
+It holds second level cache (optional) of data
+the SessionFactory in Hibernate is responsible for the creation of Session objects
+
+Session
+A Session is used to get a physical connection with a database
+It holds a first-level cache (mandatory) of data.
+Session interface provides methods to insert, update and delete the object.
+It's short lived.
+
+Transaction
+The transaction object specifies the atomic unit of work.
+This Transaction interface provides methods for transaction management.
+
+Expand-Archive -LiteralPath C:\Program Files\ -DestinationPath <target location>
+
+Expand-Archive -LiteralPath C:\Users\MSUSERSL123\maven\apache-maven-3.9.1-src.zip -DestinationPath C:\Users\MSUSERSL123\maven\unzip
+
+https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/3-ways-to-build-a-Hibernate-SessionFactory-in-Java-by-example
+
+
+Hibernate jar file
+--------------------------
+https://www.javatpoint.com/example-to-create-hibernate-application-in-eclipse-ide
+
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">
+ 
+ https://www.youtube.com/watch?v=qwv_Pia7CnA
+ 
+ 
+//annotations
+https://www.geeksforgeeks.org/hibernate-annotations/
+
+
+@Entity 	Used for declaring any POJO class as an entity for a database
+@Table	
+Used to change table details, some of the attributes are-
+
+name – override the table name
+schema
+catalogue
+enforce unique constraints
+
+
+@Id	Used for declaring a primary key inside our POJO class
+@GeneratedValue	Hibernate automatically generate the values with reference to the internal sequence and we don’t need to set the values manually.
+
+@Column	
+It is used to specify column mappings. It means if in case we don’t need the name of the column that we declare in POJO but we need to refer to that entity you can change the name for the database table. Some attributes are-
+
+Name – We can change the name of the entity for the database
+length – the size of the column mostly used in strings
+unique – the column is marked for containing only unique values
+nullable – The column values should not be null. It’s marked as NOT
+@Transient	Tells the hibernate, not to add this particular column
+@Temporal	This annotation is used to format the date for storing in the database
+@Lob	Used to tell hibernate that it’s a large object and is not a simple object
+@OrderBy	
+This annotation will tell hibernate to OrderBy as we do in SQL.
+
+For example – we need to order by student firstname in ascending order
+
+@OrderBy(“firstname asc”) 
+
+ 
+ 
+Generator classes in Hibernate
+----------------------------------------
+Hibernate framework provides many built-in generator classes:
+
+assigned
+increment
+sequence
+hilo
+native
+identity
+seqhilo
+uuid
+
+foreign
+sequence-identity
+
+Assigned:
+It is the default generator strategy if there is no <generator> element
+application assigns the id
+
+<hibernate-mapping>
+    <id ...>  
+     <generator class="assigned"></generator>  
+    </id>  
+</hibernate-mapping>
+
+increment:
+it generates unique id starting from 1
+If application has identifier, then it starts from there
+
+ <hibernate-mapping>  
+  <class ...>  
+    <id ...>  
+     <generator class="increment"></generator>  
+    </id>  
+            
+    .....  
+            
+  </class>  
+ </hibernate-mapping> 
+ 
+ Sequence:
+ 
+ hilo:
+ 
+ t uses high and low algorithm to generate the id of type short, int and long. Syntax:
+
+.....  
+ <id ...>  
+  <generator class="hilo"></generator>  
+ </id>  
+ 
+ 
+ 5) native
+It uses identity, sequence or hilo depending on the database vendor. Syntax:
+
+.....  
+ <id ...>  
+  <generator class="native"></generator>  
+ </id>  
+ .....  
+
+
+one to many
+------------------
+
+https://www.codejava.net/frameworks/hibernate/hibernate-one-to-many-xml-mapping-example
+
+
+https://www.codejava.net/frameworks/hibernate/hibernate-one-to-many-association-annotations-example
+
+
+https://www.tutorialstonight.com/free-online-html-editor?file=sample-html-code-for-homepage
+
+
+https://www.tutorialstonight.com/free-online-html-editor?file=sample-html-code-for-homepage
+
+
+
+https://howtodoinjava.com/hibernate/hibernate-many-to-many-mapping/
+
+https://www.codejava.net/frameworks/hibernate/hibernate-many-to-many-xml-mapping-example
+
+
+https://www.baeldung.com/jpa-one-to-one
+
+
+
+S
+ 
+
+
+
+
+

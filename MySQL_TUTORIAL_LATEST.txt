@@ -1,0 +1,533 @@
+MY SQL Database
+#######################
+1)create database
+2)show database
+3)Drop database or delete database
+
+
+1)Create database
+------------------
+Syntax:-
+create database <database name>
+
+Example:-
+create database demo;
+
+2)Show database
+-----------------
+Syntax:-
+show databases;
+
+Example:-
+show databases;
+
+3)Drop database
+-----------------
+Syntax:-
+drop database <database name>
+
+Example:-
+drop database testdb;
+
+
+MY SQL TABLES
+#################################
+1)create table
+2)Show tables
+3)truncate table (or) delete all the data from table
+4)Drop table or delete table
+5)Rename table
+
+1)Create Table
+----------------
+We can create table using MYSQL workbench.
+
+step1: select the database by double clicking on that in workbench
+step2: click on create table option and enter the details like table name and all the required columns
+
+We can also create table by running command in Workbench
+
+Example:-
+CREATE TABLE `demo`.`student_det` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `age` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+  
+2)Show tables
+-----------------
+step1: select the database by double clicking on it in workbench
+step2: run the below command
+
+show tables;
+
+3)truncate table (or) delete all the data from table
+----------------------------------------------------
+step1: select the database by double clicking on it in workbench
+step2: run the below command
+Syntax:-
+truncate table <table name>
+
+Example:-
+truncate table student_det;
+
+4)Drop table or delete table
+-----------------------------------
+step1: select the database by double clicking on it in workbench
+
+step2: run the below command
+Syntax:-
+drop table <table name>
+
+Example:-
+drop table student_det;
+
+5)Rename table
+--------------------
+step1: select the database by double clicking on it in workbench
+
+step2: run the below command
+Syntax:-
+RENAME <old_table> TO <new_table>;  
+
+Example:-
+RENAME student_det TO students;
+
+
+
+MYSQL Clauses
+###########################
+1)where
+2)distinct
+3)order by
+4)group by
+5)having
+
+1)Where
+------------
+MySQL WHERE Clause is used with SELECT, INSERT, UPDATE and DELETE clause to filter the results
+
+Example:-
+1)select * from demo.student_det where id = 2;
+
+2)select * from demo.student_det where id =2; and name = 'tharun';
+
+2)DISTINCT
+---------------
+distinct is used to ferch only unique rows(doesn't show the duplicate rows)
+
+Example:-
+select distinct name from demo.student_det;
+
+select distinct name,email_id from demo.student_det;
+
+3)Order by
+----------------
+order by is used to sort rows by column name either ascending order or descending order. By default it is ascending order.
+If you descending order we can use desc
+
+Example:-
+select * from demo.student_det order by name;
+
+select * from demo.student_det where address = 'hyd' order by name;
+
+select * from demo.student_det where address = 'hyd' order by name;
+
+4)Group by
+-----------------
+The MYSQL GROUP BY Clause is used to collect data from multiple records and group the result by one or more column. It is generally used in a SELECT statement.
+
+
+select address,count(name) from demo.student_det group by address;
+
+
+5)Having
+------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MY SQL Queries
+###########################
+1)Insert
+2)Update
+3)Delete
+4)Select
+
+1)INSERT
+-----------
+
+INSERT INTO demo.student_det (id,name,age,address) values (1,'bhagvath',24,'bangalore');
+
+2)Update
+--------------
+
+UPDATE demo.student_det  SET email_id = 'bhagvat@gmail.com' WHERE id = 1; 
+
+3)DELETE
+-----------
+
+DELETE from demo.student_det where id=3;
+
+4)SELECT
+------------
+
+select * from demo.student_det;
+
+(or)
+
+select id,name from demo.student_det;
+
+
+MYSQL Indexes
+#################################
+what is Index:-
+----------
+i)An index is a data structure that allows us to add indexes in the existing table. 
+ii)It enables you to improve the faster retrieval of records on a database table. 
+iii)It creates an entry for each value of the indexed columns. We use it to quickly find the record without searching each row in a database table
+
+Need for Indexing in MySQL
+--------------------
+Usually the table rows are unordered. If you want to search for a name, we need to search in all the rows of table. 
+
+If we use index, all the indexed columns are sorted and we can easily search with out checking all the rows in a table.
+Indexing is used for efficient searching
+
+
+Create Index
+----------------------
+Syntax:-
+CREATE INDEX [index_name] ON [table_name] (column names) 
+
+Example:
+
+create index test_index on demo.student_det(address);
+create index test_index on demo.student_det(address)INVISIBLE;
+ 
+
+
+Explain select name,address from demo.student_det where address='hyd';
+
+Show Indexes
+---------------------
+primary key is index by default;
+
+SHOW INDEXES FROM student_det;
+(or)
+SHOW INDEXES FROM student_det INVISIBLE;
+
+
+Drop index
+------------------
+Syntax:-
+DROP INDEX index_name ON table_name;
+
+or 
+
+DROP INDEX index_name ON table_name [algorithm_option | lock_option]; 
+
+
+Example:-
+DROP INDEX test_index ON demo.student_det;
+or 
+
+For dropping index we also can use either algorithm and lock option
+
+Algorithm :- INPLACE and COPY
+-------------
+Drop index supports 2 algorithms - INPLACE and COPY
+
+COPY:- 
+i)This algorithm allows us to copy one table into another new table row by row and then DROP Index statement performed on this new table.
+ii)On this table, we cannot perform an INSERT and UPDATE statement for data manipulation.
+
+INPLACE:-
+i)This algorithm allows us to rebuild a table instead of copy the original table.
+ii)We can perform all data manipulation operations on this table.
+
+LOCK:
+------------
+Lock option control the level of concurrent reads and writes during the index removal.
+
+LOCK - DEFAULT|NONE|SHARED|EXCLUSIVE 
+
+SHARED:-
+SHARED: This mode supports only concurrent reads, not concurrent writes.
+
+NONE:-
+you can have concurrent reads and writes
+
+DEFAULT:
+This allows max currency level for the given algorithm.
+
+MYSQL Conditions
+##################################
+
+1)AND
+2)OR
+
+5)Like - %,_
+6)IN
+8)Exists
+9)NOT
+10)Not Equal
+11)IS NULL
+12)IS NOT NULL
+13)BETWEEN
+
+#AND
+select * from demo.student_det where name = 'bhagvath' and address='bangalore';
+
+#OR
+select * from demo.student_det where name = 'bhagvath' or address='bangalore';
+
+
+#1)AND
+select name,address from demo.student_det where address='hyd' and name='tharun';
+
+#2) OR
+select name,address from demo.student_det where address='kerala' or name='tharun';
+
+#3)AND OR
+select name,address from demo.student_det where (address='hyd' and name='tharun') or address='kerala';
+
+#4) LIKE -> % and _
+
+#name starting with th
+select * from demo.student_det where name LIKE 'th%';
+
+#name ending with th
+select * from demo.student_det where name LIKE '%th';
+
+#name contains agv
+select * from demo.student_det where name LIKE '%agv%';
+select * from demo.student_det where name LIKE 'th_ru%';
+
+#NOT LIKE
+select name,address from demo.student_det where name NOT LIKE 'th_run';
+
+#IN
+select name,address from demo.student_det where name IN ('tharun','bhagvath');
+
+#NOT
+select * from demo.student_det where name NOT IN ('tharun','bhagvath');
+
+#IS NULL
+select * from demo.student_det where email_id is  null;
+
+#IS NOT NULL
+select * from demo.student_det where email_id is not null;
+
+#BETWEEN
+select * from demo.student_det where id BETWEEN 1 and 3;
+
+#exists
+CREATE TABLE demo.customer(  
+  cust_id int NOT NULL,  
+  name varchar(35),  
+  occupation varchar(25),  
+  age int  
+);
+
+CREATE TABLE demo.orders (  
+    order_id int NOT NULL,   
+    cust_id int,   
+    prod_name varchar(45),  
+    order_date date  
+);
+
+INSERT INTO demo.customer(cust_id, name, occupation, age)   
+VALUES (1, 'tharun', 'Engineer', 24),  
+(2, 'bhagvat', 'Developer', 25),  
+(3, 'Navnitha', 'Leader', 23),  
+(4, 'Gowthami', 'Scientist', 23),  
+(5, 'deepika', 'Carpenter', 22);
+
+INSERT INTO demo.orders (order_id, cust_id, prod_name, order_date)   
+VALUES (123, '1', 'Laptop', '2020-01-10'),  
+(124, '2', 'Desktop', '2020-02-12'),  
+(125, '3', 'Iphone', '2020-02-15'),  
+(126, '4', 'Mobile', '2020-03-05'),  
+(127, '5', 'TV', '2020-03-20'); 
+
+#Exists
+ SELECT name, occupation FROM demo.customer  
+WHERE EXISTS (SELECT * FROM demo.Orders   
+WHERE demo.customer.cust_id = 1); 
+
+
+MySQL JOINS
+########################
+MySQL JOINS are used with SELECT statement. It is used to retrieve data from multiple tables. It is performed whenever you need to fetch records from two or more tables.
+
+There are three types of MySQL
+joins:
+
+MySQL INNER JOIN (or sometimes called simple join)
+MySQL LEFT OUTER JOIN (or sometimes called LEFT JOIN)
+MySQL RIGHT OUTER JOIN (or sometimes called RIGHT JOIN)
+
+
+1) Count()
+2) Sum()
+3) Avg()
+4) Min()
+5) Max()
+
+
+
+
+
+
+
+
+
+
+////////////////////////////misc
+tharun - 90 - cse
+tharzan - 100 - ece
+navneetha - 50 - ece
+naveen - 20 - cse
+deepika - 10 - it
+deepak - 0 - mech
+
+1)select * from tharun_db.stundent_info1 where name like 'de%';  --> deepika, deepak
+2)select * from tharun_db.stundent_info1 where name like 'sh%'; -> 0'
+3)select * from tharun_db.stundent_info1 where name like 'nav%'; --> navneetha, naveen
+4)select * from tharun_db.stundent_info1 where name like '%ak' --> deepak
+
+
+5)select * from tharun_db.stundent_info1 order by marks; (by default ascending order)
+ 
+ deepak - 0
+ deepika - 10
+ naveen - 20
+ navneetha - 50
+ tharun - 90
+ tharzan - 100
+ 
+ 6)select * from tharun_db.stundent_info1 order by marks desc; 
+ 
+ 7) select department,name from tharun_db.stundent_info1 group by department;
+ 
+ cse - tharun
+ cse - naveen
+ 
+ ece- navneetha
+ ece- tharzan
+ 
+ it - deepika
+ mech - deepak
+ 
+ 8)select * from tharun_db.stundent_info1 where name like 'na%' and marks <50;
+
+ naveen - 20-cse
+ 
+ 
+ Assessment
+ ====================
+ 1)find 3rd highest maarks for a student
+2)display sum of marks for each branch/department(Group by)
+3)display sum of marks for each department having sum of marks grater than 60 (Group by and Having)
+4)sort marks in descending order(Order by desc)
+5)sort student table by marks in ascending order (order by asc)
+
+
+MYSQL Joins
+--------------------
+1)INNER JOIN
+2)LEFT JOIN
+3)RIGHT JOIN
+
+
+Customer
+------------------
+1)customerId
+2)customerName
+3)Address
+4)phone
+
+
+Order
+--------------
+OrderId
+quantity
+price
+customerId
+
+
+
+
+customer 
+----------------
+1 tharun hyd 1234
+2 naveent bang 4321
+
+3 deepika chn 5678
+
+4 girish pune 0987
+
+5 bhagvath mum 8324
+
+
+Order
+-----------
+100 23/03/2023 2 100000 1
+
+101 23/03/2023 4 200000 2
+
+102 23/03/2023 1 100   5
+
+
+customerName, customerId, orderId
+
+tharun      1        100
+navneeyha 2          101
+bhagvath  5          102
+
+inner join
+-------------
+
+
+select custName,customerId,orderId from customer inner join  o
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
