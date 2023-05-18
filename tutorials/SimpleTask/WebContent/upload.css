@@ -1,0 +1,269 @@
+.button {
+	background-color: #084cdf;
+	border: none;
+	color: white;
+	padding: 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.button5 {
+	border-radius: 10px;
+	border: 1px solid #555;
+}
+
+/* body {
+  margin: 20px 60px;
+} */
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.drop-container {
+	position: relative;
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 200px;
+	padding: 20px;
+	border-radius: 10px;
+	border: 2px dashed #555;
+	color: #444;
+	cursor: pointer;
+	transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+	background: #eee;
+	border-color: #111;
+}
+
+.drop-container:hover .drop-title {
+	color: #222;
+}
+
+.drop-title {
+	color: #444;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	transition: color .2s ease-in-out;
+}
+
+input[type=file] {
+	width: 350px;
+	max-width: 100%;
+	color: #444;
+	padding: 5px;
+	background: #fff;
+	border-radius: 10px;
+	border: 1px solid #555;
+}
+
+input[type=file]::file-selector-button {
+	margin-right: 20px;
+	border: none;
+	background: #084cdf;
+	padding: 10px 20px;
+	border-radius: 10px;
+	color: #fff;
+	cursor: pointer;
+	transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+	background: #0d45a5;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+	overflow: hidden;
+	background-color: #F0FFFF;
+}
+
+.topnav a {
+	float: left;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.topnav .search-container {
+	float: right;
+}
+
+.topnav input[type=text] {
+	padding: 6px;
+	margin-top: 8px;
+	font-size: 17px;
+	border: none;
+}
+
+.topnav .search-container button {
+	float: right;
+	padding: 6px 10px;
+	margin-top: 8px;
+	margin-right: 16px;
+	background: #ddd;
+	font-size: 17px;
+	border: none;
+	cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+	background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+	.topnav .search-container {
+		float: none;
+	}
+	.topnav a, .topnav input[type=text], .topnav .search-container button {
+		float: none;
+		display: block;
+		text-align: left;
+		width: 100%;
+		margin: 0;
+		padding: 14px;
+	}
+	.topnav input[type=text] {
+		border: 1px solid #ccc;
+	}
+	.center {
+		text-align: center;
+		border: 3px solid green;
+	}
+}
+
+.button5 {
+	border-radius: 50%;
+}
+
+ul {
+	display: flex; /* Make Flex container */
+	justify-content: space-between; /* Divide space equally */
+	list-style-type: none; /* Hide Bullets */
+	padding-left: 0px; /* Remove default padding if any */
+	color: black;
+}
+
+ul>li {
+	padding: 15px;
+}
+
+/* fdsfdddddddddddddddddddddddddddddddddddd
+ */
+.box {
+	border: 1px solid #ccc;
+	padding: 20px;
+	margin: 20px;
+	height: 100vh;
+	width: 100%;
+}
+
+h2 {
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+h3 {
+	font-size: 16px;
+	margin-top: 10px;
+}
+
+#audit1 {
+font-size: 14px;
+	display: inline-block;
+	margin-bottom: 10px; 
+	border:none 2px black;
+	background-color:   #2db300; 
+	border-radius:5px; 
+	width:180px;
+	padding:5px;
+	text-align:center; 
+	cursor:pointer;
+	
+}
+#audit1:hover{
+background-color:   #9fff80; 
+border: solid 1px black;	
+	
+}
+#audit2{
+	margin-right:5px;
+}
+
+
+input[type="file"] {
+	margin-bottom: 10px;
+}
+
+button[type="submit"] {
+	background-color: #339933;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+
+/* input[type="file"] {
+	display: none;
+} */
+.custom-file-upload {
+	border: 1px solid #ccc;
+	display: inline-block;
+	padding: 6px 12px;
+	cursor: pointer;
+}
+
+.fileUpload input[type=file] {
+	display: none;
+}
+
+/* .btn {
+	background-color: #e3e3e3;
+	color: #333;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	padding: 6px 12px;
+	font-size: 16px;
+} */
+.btn {
+	border: none;
+	color: DodgerBlue;
+	padding: 0px 0px;
+	font-size: 20px;
+}
+
+.audit {
+	background-color: #339933;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	border:solid 2px black;
+	background-color: #339933;
+	border-radius:5px;
+	padding:3px;
+}

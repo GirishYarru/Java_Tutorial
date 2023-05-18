@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Convert Excel to HTML Table using JavaScript</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript"
+	src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+</head>
+<style>
+.button {
+	background-color: #084cdf;
+	border: none;
+	color: white;
+	padding: 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.button5 {
+	border-radius: 10px;
+	border: 1px solid #555;
+}
+
+/* body {
+  margin: 20px 60px;
+} */
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.drop-container {
+	position: relative;
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 200px;
+	padding: 20px;
+	border-radius: 10px;
+	border: 2px dashed #555;
+	color: #444;
+	cursor: pointer;
+	transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+	background: #eee;
+	border-color: #111;
+}
+
+.drop-container:hover .drop-title {
+	color: #222;
+}
+
+.drop-title {
+	color: #444;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	transition: color .2s ease-in-out;
+}
+
+input[type=file] {
+	width: 350px;
+	max-width: 100%;
+	color: #444;
+	padding: 5px;
+	background: #fff;
+	border-radius: 10px;
+	border: 1px solid #555;
+}
+
+input[type=file]::file-selector-button {
+	margin-right: 20px;
+	border: none;
+	background: #084cdf;
+	padding: 10px 20px;
+	border-radius: 10px;
+	color: #fff;
+	cursor: pointer;
+	transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+	background: #0d45a5;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+	overflow: hidden;
+	background-color: #F0FFFF;
+}
+
+.topnav a {
+	float: left;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.topnav .search-container {
+	float: right;
+}
+
+.topnav input[type=text] {
+	padding: 6px;
+	margin-top: 8px;
+	font-size: 17px;
+	border: none;
+}
+
+.topnav .search-container button {
+	float: right;
+	padding: 6px 10px;
+	margin-top: 8px;
+	margin-right: 16px;
+	background: #ddd;
+	font-size: 17px;
+	border: none;
+	cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+	background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+	.topnav .search-container {
+		float: none;
+	}
+	.topnav a, .topnav input[type=text], .topnav .search-container button {
+		float: none;
+		display: block;
+		text-align: left;
+		width: 100%;
+		margin: 0;
+		padding: 14px;
+	}
+	.topnav input[type=text] {
+		border: 1px solid #ccc;
+	}
+	.center {
+		text-align: center;
+		border: 3px solid green;
+	}
+}
+
+.button5 {
+	border-radius: 50%;
+}
+
+ul {
+	display: flex; /* Make Flex container */
+	justify-content: space-between; /* Divide space equally */
+	list-style-type: none; /* Hide Bullets */
+	padding-left: 0px; /* Remove default padding if any */
+	color: black;
+}
+
+ul>li {
+	padding: 15px;
+}
+
+/* fdsfdddddddddddddddddddddddddddddddddddd
+ */
+.box {
+	border: 1px solid #ccc;
+	padding: 20px;
+	margin: 20px;
+	height: 100vh;
+	width: 100%;
+}
+
+h2 {
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+h3 {
+	font-size: 16px;
+	margin-top: 10px;
+}
+
+label {
+	font-size: 14px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+input[type="file"] {
+	margin-bottom: 10px;
+}
+
+button[type="submit"] {
+	background-color: #339933;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.btn {
+	border: none;
+	color: DodgerBlue;
+	padding: 0px 0px;
+	font-size: 20px;
+}
+
+/* input[type="file"] {
+	display: none;
+} */
+.custom-file-upload {
+	border: 1px solid #ccc;
+	display: inline-block;
+	padding: 6px 12px;
+	cursor: pointer;
+}
+
+.fileUpload input[type=file] {
+	display: none;
+}
+
+.btn {
+	background-color: #e3e3e3;
+	color: #333;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	padding: 6px 12px;
+	font-size: 16px;
+}
+</style>
+</head>
+
+<body onload="myFunction()">
+	<header>
+		<div class="topnav">
+			<div class="center" style="text-align: center">
+				<ul>
+					<li>premier</li>
+					<li><h2>Base Development (alight_pt7)</h2></li>
+					<li>
+						<div class="search-container">
+							<form action="/action_page.php">
+								<input type="text" placeholder="Search.." name="search">
+								<button type="submit">
+									<i class="fa fa-search"></i>
+								</button>
+
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+	</header>
+
+	<div class="box">
+		<h2>&#9660; Instructions</h2>
+		<label class="btn"><i class="fa fa-download"></i></label> Audit User
+		Templates
+
+		<form action="ExcelServlet" method="post" name="myForm" id="myForm">
+
+			<div class="col-md-12">
+				<pre id="jsondata"></pre>
+			</div>
+
+			<label class="btn fileUpload btn-default"> Browse <input
+				type="file" hidden="" id="input">
+			</label> <input type="hidden" id="jsonValue" name="jsonValue">
+			<div id="excel_data" class="mt-5"></div>
+			<!-- 			<button id="submit1" type="submit" style="visibility: hidden"></button>
+ -->
+			<p id="showData"></p>
+		</form>
+	</div>
+</body>
+</html>
+<script>
+const excel_file = document.getElementById('input');
+excel_file.addEventListener('change', (event) => {
+   // excel_file.value = '';
+    //document.getElementById('submit').disabled = false;
+    document.getElementById('excel_data').innerHTML = '';
+  
+
+
+    if(!['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].includes(event.target.files[0].type))
+    {
+    	alert('invalid');
+    	document.getElementById('showData').innerHTML = '';
+        document.getElementById('excel_data').innerHTML = '<div class="alert alert-danger">Only .xlsx or .xls file format are allowed</div>';
+
+
+        return false;
+    }
+    var reader = new FileReader();
+    reader.readAsArrayBuffer(event.target.files[0]);
+    reader.onload = function(event){
+        var data = new Uint8Array(reader.result);
+        var workbook = XLSX.read(data, {type:'array'});
+        workbook.SheetNames.forEach(sheet => {
+            let rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+            if(rowObject.length<=0){
+                document.getElementById('excel_data').innerHTML = '<div class="alert alert-danger">uploaded excel is blank</div>';
+
+                //excel_file.value = '';
+                
+               // document.getElementById('submit').disabled = true;
+
+                return false;
+            }
+
+            document.getElementById("jsonValue").value = JSON.stringify(rowObject,undefined,4);
+            alert('11');
+/*             document.getElementById('submit1').submit;
+            alert('12'); */
+            
+            var jsAtt = JSON.stringify(rowObject,undefined,4);
+            
+            
+            jsAtt = jsAtt.replaceAll(/\n/g,' ').replaceAll(/\r/g,' ').replaceAll(/\s/g,' ');
+            
+            
+            
+            
+            
+    	    const myBooks = JSON.parse(jsAtt);
+        	/*     var a = document.getElementById('testValue').innerHTML;
+        	    
+        	    a = a.replace(/'/g, '"');
+        	    a = JSON.parse(a);  */
+        	    // Extract value from table header. 
+        	    // ('Book ID', 'Book Name', 'Category' and 'Price')
+        	    let col = [];
+        	    for (let i = 0; i < myBooks.length; i++) {
+        	      for (let key in myBooks[i]) {
+        	        if (col.indexOf(key) === -1) {
+        	          col.push(key);
+        	        }
+        	      }
+        	    }
+
+        	    // Create table.
+        	    const table = document.createElement("table");
+
+        	    // Create table header row using the extracted headers above.
+        	    let tr = table.insertRow(-1);                   // table row.
+
+        	    for (let i = 0; i < col.length; i++) {
+        	      let th = document.createElement("th");      // table header.
+        	      th.innerHTML = col[i];
+        	      tr.appendChild(th);
+        	    }
+
+        	    // add json data to the table as rows.
+        	    for (let i = 0; i < myBooks.length; i++) {
+
+        	      tr = table.insertRow(-1);
+
+        	      for (let j = 0; j < col.length; j++) {
+        	        let tabCell = tr.insertCell(-1);
+        	        tabCell.innerHTML = myBooks[i][col[j]];
+        	      }
+        	    }
+
+        	    // Now, add the newly created table with json data, to a container.
+        	    const divShowData = document.getElementById('showData');
+        	    divShowData.innerHTML = "";
+        	    divShowData.appendChild(table);
+            
+            
+       });
+    }
+});
+</script>

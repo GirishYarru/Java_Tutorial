@@ -1,0 +1,6 @@
+https://stackoverflow.com/questions/12057961/how-to-convert-an-tree-path-to-a-json-object
+
+https://ankorainc.medium.com/n-ary-tree-structures-and-their-exciting-application-for-a-question-and-answer-based-decision-6ac264b55fab
+
+
+https://leetcode.com/discuss/interview-question/660287/Construct-N-ary-tree-from-given-parent-child-relation-and-Traversal
